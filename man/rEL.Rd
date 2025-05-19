@@ -7,20 +7,23 @@
 rEL(n, mu, sigma, delta)
 }
 \arguments{
-\item{n}{Sample size}
+\item{n}{Integer. Sample size.}
 
-\item{mu}{Location parameter}
+\item{mu}{Numeric. Location parameter.}
 
-\item{sigma}{Scale parameter (must be > 0)}
+\item{sigma}{Numeric. Scale parameter (must be > 0).}
 
-\item{delta}{Uniform noise parameter (must be > 0)}
+\item{delta}{Numeric. Uniform noise parameter (must be > 0).}
 }
 \value{
-Vector of sample values
+A numeric vector of random samples from the Extended Laplace distribution.
 }
 \description{
-Random Sample Generation of the Extended Laplace Distribution
+Generates random samples from the Extended Laplace distribution using the convolution representation: \eqn{Y = X + U}, where \eqn{X \sim \text{Laplace}(\mu, \sigma)} and \eqn{U \sim \text{Uniform}(-\delta, \delta)}.
+}
+\examples{
+rEL(10, mu = 0, sigma = 1, delta = 0.5)
 }
 \references{
-Saah, D. K., & Kozubowski, T. J. (2025). A new class of extended Laplace distributions with applications to modeling contaminated Laplace data. Journal of Computational and Applied Mathematics. \doi{10.1016/j.cam.2025.116588}
+Saah, D. K., & Kozubowski, T. J. (2025). A new class of extended Laplace distributions with applications to modeling contaminated Laplace data. \emph{Journal of Computational and Applied Mathematics}. \doi{10.1016/j.cam.2025.116588}
 }

@@ -3,7 +3,7 @@
 
 ## ExtendedLaplace: Extended Laplace Distribution
 
-The **ExtendedLaplace** R package provides functions for the probability density function (`dEL()`), cumulative distribution function (`pEL()`), quantile function (`qEL()`), and random number generation (`rEL()`) for the **Extended Laplace distribution**, developed to model contaminated Laplace data with additional uniform errors.
+The **ExtendedLaplace** R package provides functions for the probability density function (`dEL()`), cumulative distribution function (`pEL()`), quantile function (`qEL()`), random number generation (`rEL()`) and QQ-plot for the **Extended Laplace distribution**, developed to model contaminated Laplace data with additional uniform errors.
 
 This distribution generalizes the classical Laplace distribution by convolving it with a uniform distribution, which allows for modeling error-prone data in a more robust way.
 
@@ -36,6 +36,7 @@ install.packages("ExtendedLaplace")
 * `pEL(y, mu, sigma, delta)`: Cumulative distribution function
 * `qEL(u, mu, sigma, delta)`: Quantile function
 * `rEL(n, mu, sigma, delta)`: Random number generation
+* `qqplotEL(samples, mu, sigma, delta)`: Quantile-Quantile Plot
 
 ## Example
 
@@ -57,6 +58,9 @@ set.seed(123)
 samples <- rEL(1000, mu, sigma, delta)
 hist(samples, breaks = 50, freq = FALSE)
 curve(dEL(x, mu, sigma, delta), add = TRUE, col = "blue", lwd = 2)
+
+# QQ-Plot 
+qqplotEL(samples, mu, sigma, delta)
 ```
 
 ## Authors

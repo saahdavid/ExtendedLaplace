@@ -42,6 +42,7 @@ The package provides the following main functions:
 - `pEL(y, mu, sigma, delta)`: Cumulative distribution function
 - `qEL(u, mu, sigma, delta)`: Quantile function (inverse CDF)
 - `rEL(n, mu, sigma, delta)`: Random number generation
+- `qqplotEL(samples, mu, sigma, delta)`: Quantile-Quantile Plot
 
 ## Examples
 
@@ -67,6 +68,12 @@ samples <- rEL(10000, mu = 0, sigma = 1, delta = 1)
 hist(samples, probability = TRUE, breaks = 40, main = "Simulated EL Data", xlab = 'y')
 curve(dEL(x, mu = 0, sigma = 1, delta = 1), add = TRUE, col = "navy", lwd = 2)
 ```
+
+### QQ-Plot
+```{r}
+qqplotEL(samples, mu = 0, sigma = 1, delta = 1)
+```
+
 
 ## Theoretical Notes
 

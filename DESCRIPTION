@@ -1,6 +1,6 @@
 Package: ExtendedLaplace
 Title: Extended Laplace Distribution
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     c(
       person("David", "Saah", email = "saahdavidkofi@gmail.com", role = c("aut", "cre"), 
@@ -19,4 +19,4 @@ Suggests:
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 URL: https://doi.org/10.1016/j.cam.2025.116588
-BugReports: https://github.com/saahdavid/ExtendedLaplace/issues
+BugReports: https://github.com/saahdavid/ExtendedLaplace/

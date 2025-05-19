@@ -1,0 +1,22 @@
+Package: ExtendedLaplace
+Title: Extended Laplace Distribution
+Version: 0.0.0.9000
+Authors@R: 
+    c(
+      person("David", "Saah", email = "saahdavidkofi@gmail.com", role = c("aut", "cre"), 
+             comment = c(ORCID = "0009-0006-8049-3627")),
+      person("Tomasz", "Kozubowski", role = "aut")
+    )
+Description: Provides functions for the PDF, CDF, quantile function, and random number generation from the Extended Laplace distribution.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+URL: https://doi.org/10.1016/j.cam.2025.116588
+BugReports: https://github.com/saahdavid/ExtendedLaplace/issues

@@ -1,0 +1,133 @@
+---
+title: "Using the ExtendedLaplace Package"
+author: "David Saah & Tomasz Kozubowski"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Using the ExtendedLaplace Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#"
+)
+```
+
+## Introduction
+
+The `ExtendedLaplace` package provides tools for working with the Extended Laplace (EL) distribution, a generalization of the classical Laplace distribution. This distribution is characterized by four parameters: location $\mu$, scale \(\sigma > 0\), and a uniform noise range \(\delta > 0\).
+
+The EL distribution arises as the sum \(Y = X + U\) where \(X \sim \text{Laplace}(\mu, \sigma)\) and \(U \sim \text{Uniform}(-\delta, \delta)\).
+
+## Installation
+
+To install the development version of this package from GitHub:
+
+```r
+# install.packages("devtools")
+devtools::install_github("saahdavid/ExtendedLaplace")
+```
+
+## Functions
+
+The package provides the following main functions:
+
+- `dEL(y, mu, sigma, delta)`: Probability density function
+- `pEL(y, mu, sigma, delta)`: Cumulative distribution function
+- `qEL(u, mu, sigma, delta)`: Quantile function (inverse CDF)
+- `rEL(n, mu, sigma, delta)`: Random number generation
+
+## Examples
+
+### Density
+```{r}
+library(ExtendedLaplace)
+curve(dEL(x, mu = 0, sigma = 1, delta = 1), from = -5, to = 5, ylab = "Density", xlab = 'y')
+```
+
+### Distribution Function
+```{r}
+curve(pEL(x, mu = 0, sigma = 1, delta = 1), from = -5, to = 5, ylab = "CDF", xlab = 'y')
+```
+
+### Quantiles
+```{r}
+qEL(c(0.025, 0.5, 0.975), mu = 0, sigma = 1, delta = 1)
+```
+
+### Simulation
+```{r}
+samples <- rEL(10000, mu = 0, sigma = 1, delta = 1)
+hist(samples, probability = TRUE, breaks = 40, main = "Simulated EL Data", xlab = 'y')
+curve(dEL(x, mu = 0, sigma = 1, delta = 1), add = TRUE, col = "navy", lwd = 2)
+```
+
+## Theoretical Notes
+
+The Extended Laplace distribution has the following form:
+
+### PDF
+
+$$
+\begin{aligned}
+g(y) = \frac{1}{4\delta} 
+\begin{cases}
+  e^{\frac{y- \mu + \delta}{\sigma}} - e^{\frac{y- \mu - \delta}{\sigma}}, & y < \mu - \delta \\
+  2 - e^{-\frac{y - \mu + \delta}{\sigma}} - e^{\frac{y - \mu - \delta}{\sigma}}, & \mu - \delta \leq y < \mu + \delta \\
+  e^{-\frac{y - \mu - \delta}{\sigma}} - e^{-\frac{y - \mu + \delta}{\sigma}}, & y \geq \mu + \delta
+\end{cases}
+\end{aligned}
+$$
+
+### CDF
+
+$$
+\begin{aligned}
+    G(y) = \frac{1}{4\delta}
+    \begin{cases}
+        \sigma e^{\frac{y- \mu + \delta}{\sigma}} -  \sigma e^{\frac{y- \mu - \delta}{\sigma}}   , & y < \mu - \delta \\
+        2(y - \mu + \delta) + \sigma e^{-\frac{y - \mu + \delta}{\sigma}} - \sigma e^{\frac{y - \mu - \delta}{\sigma}} , & \mu-\delta \leq y < \mu+\delta\\
+        4\delta + \sigma e^{-\frac{y- \mu + \delta}{\sigma}} - \sigma e^{-\frac{y- \mu - \delta}{\sigma}} , & y \geq \mu + \delta \, .
+    \end{cases}
+\end{aligned}
+$$
+
+### The quantile function
+
+For $\sigma>0$ and $0<u<1$, we have $Q(u)=\mu+\sigma z$, where 
+
+$$
+\begin{aligned}
+    z = 
+    \begin{cases}
+        \log [4\tau u] - \log [e^\tau - e^{-\tau}] & \mbox{for }  0<u\leq (1-e^{-2\tau})/(4\tau) \\
+        z^\ast &  \mbox{for } (1-e^{-2\tau})/(4\tau) \leq u \leq 1 - (1-e^{-2\tau})/(4\tau)\\
+        - \log [4\tau (1-u)] + \log [e^{\tau} - e^{-\tau}] & \mbox{for }  1 - (1-e^{-2\tau})/(4\tau) \leq u <1,
+    \end{cases}
+\end{aligned}
+$$ 
+
+where $\tau=\delta/\sigma$ and $z^\ast$ is a unique solution of the equation:
+$$
+\begin{aligned}
+    u = \frac{1}{4\tau} [ 2(z+\tau) - e^{-\tau}(e^z - e^{-z})], \quad -\tau\leq z \leq \tau. 
+\end{aligned}
+$$
+
+## Session Info
+```{r}
+sessionInfo()
+```
+
+# References
+
+Saah, D. K., & Kozubowski, T. J. (2025).  
+*A new class of extended Laplace distributions with applications to modeling contaminated Laplace data*.  
+_Journal of Computational and Applied Mathematics_.  
+[https://doi.org/10.1016/j.cam.2025.116588](https://doi.org/10.1016/j.cam.2025.116588)

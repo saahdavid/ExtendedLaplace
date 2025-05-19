@@ -1,7 +1,29 @@
-.Rproj.user
-inst/doc
+# R files
 .Rhistory
-.Rdata
-.httr-oauth
-.DS_Store
-.quarto
+.Rapp.history
+.RData
+.Ruserdata
+
+# RStudio files
+.Rproj.user/
+
+# Package build/check files
+.Rcheck/
+*.tar.gz
+
+# Documentation
+doc/
+inst/doc/
+
+# Vignettes
+vignettes/*.html
+vignettes/*.pdf
+*.utf8.md
+*.knit.md
+
+# Other cache/temp
+.Rcache/
+.cache/
+
+# Token or config
+.Renviron

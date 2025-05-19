@@ -27,3 +27,8 @@ vignettes/*.pdf
 
 # Token or config
 .Renviron
+.Rproj.user
+.Rdata
+.httr-oauth
+.DS_Store
+.quarto

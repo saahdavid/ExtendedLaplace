@@ -17,17 +17,18 @@ Developed by:
 
 ## Installation
 
+
+You can install from CRAN:
+
+```r
+install.packages("ExtendedLaplace")
+```
+
 You can install the development version from GitHub:
 
 ```r
 # Requires devtools or remotes package
 remotes::install_github("saahdavid/ExtendedLaplace")
-```
-
-Once submitted to CRAN, you can install it using:
-
-```r
-install.packages("ExtendedLaplace")
 ```
 
 ## Functions

@@ -20,8 +20,8 @@ Developed by:
 You can install the development version from GitHub:
 
 ```r
-# install.packages("devtools")
-devtools::install_github("saahdavid/ExtendedLaplace")
+# Requires devtools or remotes package
+remotes::install_github("saahdavid/ExtendedLaplace")
 ```
 
 Once submitted to CRAN, you can install it using:
